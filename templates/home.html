@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div >
+  
+    <form method="POST" action="." >
+      {% csrf_token %}
+      {{form.as_p}}  
+     <input type="submit" value="Download" class="btn btn-info btn-block">
+    </form>
+  
+  
+</div>
+
+
+
+<div class="row">
+
+  <div class="col-sm-4">
+    <h3>{{title}}</h3>
+    <p><img class="img-responsive" src="{{ thumb }}"></p>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    {% if Duration %}
+    <h3>Duration: {{Duration}}</h3>
+
+    <p>
+      <a href=" {{ downloadlink }}" download="{{ title }}.{{extension}}" target="_blank" class="btn btn-success btn-block"> Click here to Download </a>
+    </p>
+    {% endif %}
+    
+  
+
+  </div>
+
+
+</div>
+
+
+
+{% endblock %}
